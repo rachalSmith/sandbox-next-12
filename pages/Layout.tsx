@@ -1,3 +1,5 @@
+import NavBar from "../layout/nav/NavBar";
+
 interface ILayout {
   children: React.ReactNode;
 }
@@ -5,8 +7,8 @@ interface ILayout {
 const Layout = ({ children }: ILayout) => {
   return (
     <>
-      Anything that needs to be displayed everywhere, like the navbar or global
-      modals {children}
+      <NavBar />
+      {children}
     </>
   );
 };
