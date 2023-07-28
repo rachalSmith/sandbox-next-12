@@ -4,6 +4,9 @@ import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 
+// static props - request through browser - only fetched on build without revalidate interval - faster
+// sever props - render at request time - data that needs to be validated first - updates itself when data changes - slower
+
 export const getStaticProps = async () => {
   const response = await fetch(
     "http://api.coinstats.app/public/v1/coins?skip=0"
@@ -13,7 +16,6 @@ export const getStaticProps = async () => {
 };
 
 const Home: NextPage = ({ coinData }: any) => {
-  console.log(coinData);
   return (
     <>
       <Head>

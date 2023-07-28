@@ -1,4 +1,4 @@
-import NavBar from "../layout/nav/NavBar";
+import NavBar from "../components/layout/nav/NavBar";
 
 interface ILayout {
   children: React.ReactNode;
