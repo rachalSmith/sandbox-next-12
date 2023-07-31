@@ -1,12 +1,15 @@
+import { useState } from "react";
 import Image from "next/image";
+
 import navBurger from "../../public/nav-burger.svg";
-import logo2 from "../../public/logo2.png";
+import logo2 from "../../../public/logo2.png";
 import NavLinks from "./NavLinks";
 import MobileMenu from "./MobileMenu";
-import { useState } from "react";
 import MobileButton from "./MobileButton";
 
-const NavBar = () => {
+interface INavBarProps {}
+
+const NavBar = ({}: INavBarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (

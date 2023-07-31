@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface INavLinks {
   linkTitle: string;
@@ -7,7 +8,7 @@ interface INavLinks {
 
 const navLinks: INavLinks[] = [
   { linkTitle: "Home", linkHref: "/" },
-  { linkTitle: "A", linkHref: "/a" },
+  { linkTitle: "About", linkHref: "/about" },
   { linkTitle: "B", linkHref: "/b" },
   { linkTitle: "C", linkHref: "/c" },
 ];
@@ -15,13 +16,26 @@ const navLinks: INavLinks[] = [
 interface INavLinksProps {}
 
 const NavLinks = ({}: INavLinksProps) => {
+  const router = useRouter();
+
+  const getClassNamesForCurrentPage = (
+    link: string,
+    currentPage: string
+  ): string => {
+    const currentPageClass = "underline underline-offset-4 decoration-2";
+
+    return link === currentPage ? currentPageClass : "";
+  };
+
   return (
     <>
       {navLinks.map((link) => (
-        <li key={link.linkHref} className="text-white font-bold">
-          <Link href={link.linkHref}>
-            <button>{link.linkTitle}</button>
-          </Link>
+        <li
+          key={link.linkHref}
+          className={`text-white font-bold hover:underline underline-offset-4 decoration-2 
+          ${getClassNamesForCurrentPage(link.linkHref, router.pathname)} `}
+        >
+          <Link href={link.linkHref}>{link.linkTitle}</Link>
         </li>
       ))}
     </>
