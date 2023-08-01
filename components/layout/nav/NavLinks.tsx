@@ -9,7 +9,7 @@ interface INavLinks {
 const navLinks: INavLinks[] = [
   { linkTitle: "Home", linkHref: "/" },
   { linkTitle: "About", linkHref: "/about" },
-  { linkTitle: "B", linkHref: "/b" },
+  { linkTitle: "Form", linkHref: "/form" },
   { linkTitle: "C", linkHref: "/c" },
 ];
 
@@ -32,8 +32,8 @@ const NavLinks = ({}: INavLinksProps) => {
       {navLinks.map((link) => (
         <li
           key={link.linkHref}
-          className={`text-white font-bold hover:underline underline-offset-4 decoration-2 
-          ${getClassNamesForCurrentPage(link.linkHref, router.pathname)} `}
+          className={`text-white font-semibold hover:underline underline-offset-4 decoration-2 
+          ${getClassNamesForCurrentPage(link.linkHref, router.pathname)}`}
         >
           <Link href={link.linkHref}>{link.linkTitle}</Link>
         </li>
