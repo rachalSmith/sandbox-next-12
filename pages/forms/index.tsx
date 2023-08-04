@@ -1,7 +1,7 @@
 import router from "next/router";
 import Container from "../../components/layout/Container";
-import OutlineButton from "../../components/layout/buttons/OutlineButton";
-import FilledButton from "../../components/layout/buttons/FilledButton";
+import OutlineButton from "../../components/buttons/OutlineButton";
+import FilledButton from "../../components/buttons/FilledButton";
 
 const Forms = () => {
   return (

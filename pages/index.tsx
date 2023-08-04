@@ -1,29 +1,50 @@
-import type { NextPage } from "next";
-
-import Link from "next/link";
 import Head from "next/head";
-import Image from "next/image";
+import { z } from "zod";
+
+import Container from "../components/layout/Container";
 
 // static props - request through browser - only fetched on build without revalidate interval - faster
 // sever props - render at request time - data that needs to be validated first - updates itself when data changes - slower
 
+const CharacterData = z
+  .object({
+    name: z.string(),
+    homeworld: z.string(),
+    species: z.array(z.string().url()),
+    height: z.coerce.number(),
+    starships: z.array(z.string().url()),
+  })
+  .array();
+
+type CharacterData = z.infer<typeof CharacterData>;
+
 export const getStaticProps = async () => {
-  const response = await fetch(
-    "http://api.coinstats.app/public/v1/coins?skip=0"
-  );
+  const response = await fetch("https://swapi.dev/api/people");
   const data = await response.json();
-  return { props: { coinData: data } };
+
+  const parsedData = CharacterData.parse(data.results);
+
+  return { props: { characters: parsedData } };
 };
 
-const Home: NextPage = ({ coinData }: any) => {
+interface IHomeProps {
+  characters: CharacterData;
+}
+
+const Home = ({ characters }: IHomeProps) => {
+  console.log(characters);
   return (
     <>
       <Head>
         <title>Sandbox</title>
       </Head>
-
-      <Link href={"./about"}>About</Link>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <Container>
+        <ul>
+          {characters.map<CharacterData[]>((character) => (
+            <li>{character.name}</li>
+          ))}
+        </ul>
+      </Container>
     </>
   );
 };
