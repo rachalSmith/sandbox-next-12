@@ -23,6 +23,9 @@ export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch("https://swapi.dev/api/people");
   const data = await response.json();
 
+  // const resp = await fetch("http://localhost:3000/api/hello");
+  // console.log(await resp.json());
+
   const parsedData = CharacterData.parse(data.results);
 
   return { props: { characters: parsedData } };
@@ -33,7 +36,6 @@ interface IHomeProps {
 }
 
 const Home = ({ characters }: IHomeProps) => {
-  console.log(characters);
   return (
     <>
       <Head>
