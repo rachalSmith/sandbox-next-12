@@ -6,10 +6,10 @@ interface ILayout {
 
 const Layout = ({ children }: ILayout) => {
   return (
-    <>
+    <div className="bg-neutral-50 h-screen w-screen">
       <NavBar />
       {children}
-    </>
+    </div>
   );
 };
 
