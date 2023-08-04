@@ -9,7 +9,7 @@ const MobileMenu = ({ isMenuOpen }: IMobileMenu) => {
     <div
       className={`fixed right-0 top-12 w-48 h-[calc(100%-theme(space.12))] bg-sky-900 p-4 ${
         isMenuOpen ? "transform-none" : "translate-x-[100%]"
-      } ease-in duration-300`}
+      } ease-in duration-300 z-50`}
     >
       <ul className="flex flex-col gap-4 items-center">
         <NavLinks />

@@ -9,7 +9,7 @@ interface INavLinks {
 const navLinks: INavLinks[] = [
   { linkTitle: "Home", linkHref: "/" },
   { linkTitle: "About", linkHref: "/about" },
-  { linkTitle: "Form", linkHref: "/form" },
+  { linkTitle: "Forms", linkHref: "/forms" },
   { linkTitle: "C", linkHref: "/c" },
 ];
 

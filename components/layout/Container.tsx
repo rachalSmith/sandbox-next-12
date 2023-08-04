@@ -6,7 +6,7 @@ interface IContainerProps {
 
 const Container = ({ children }: IContainerProps) => {
   return (
-    <main className="container mx-auto px-4 flex justify-center">
+    <main className="container mx-auto p-4 flex justify-center">
       {children}
     </main>
   );
